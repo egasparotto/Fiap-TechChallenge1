@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -12,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\FiapBlog.Data\FiapBlog.Data.csproj" />
+    <ProjectReference Include="..\FiapBlog.Domain\FiapBlog.Domain.csproj" />
   </ItemGroup>
 
 </Project>
