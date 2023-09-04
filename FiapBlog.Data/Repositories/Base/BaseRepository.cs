@@ -22,14 +22,14 @@ namespace FiapBlog.Data.Repositories.Base
             Context = context;
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public virtual IQueryable<TEntity> GetAll()
         {
             return Context.Set<TEntity>();
         }
 
         public virtual TEntity Get(Func<TEntity, bool> func)
         {
-            return Context.Set<TEntity>().FirstOrDefault(func);
+            return GetAll().FirstOrDefault(func);
         }
 
         public virtual void Insert(TEntity entity)

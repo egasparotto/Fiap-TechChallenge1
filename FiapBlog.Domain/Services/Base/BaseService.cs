@@ -9,7 +9,7 @@ namespace FiapBlog.Domain.Services.Base
         where TEntity : Entity, IAggregateRoot
         where TRepository : IBaseRepository<TEntity>
     {
-        protected TRepository Repository { get; set; }
+        protected TRepository Repository { get; }
         protected BaseService(TRepository repository)
         {
             Repository = repository;

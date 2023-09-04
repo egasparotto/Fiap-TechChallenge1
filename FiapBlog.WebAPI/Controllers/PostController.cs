@@ -1,4 +1,5 @@
-﻿using FiapBlog.Domain.Entities.Posts;
+﻿using FiapBlog.Domain.Entities.Categories;
+using FiapBlog.Domain.Entities.Posts;
 using FiapBlog.Domain.Interfaces.Services.Posts;
 using FiapBlog.WebAPI.Model.Posts;
 
@@ -34,7 +35,8 @@ namespace FiapBlog.WebAPI.Controllers
             var post = new Post()
             {
                 Content = entity.Content,
-                Title = entity.Title
+                Title = entity.Title,
+                Categories = entity.Categories.Select(x => new Category() { Id = x })
             };
 
             Service.Insert(post);
@@ -44,12 +46,16 @@ namespace FiapBlog.WebAPI.Controllers
         [HttpPut]
         public virtual IActionResult Update([FromBody] UpdatePostDTO entity)
         {
-            var post = new Post()
+            var post = Service.GetById(entity.Id);
+
+            if(post == null)
             {
-                Id = entity.Id,
-                Content = entity.Content,
-                Title = entity.Title
-            };
+                return NotFound();
+            }
+
+            post.Title = entity.Title;
+            post.Content = entity.Content;
+            post.Categories = entity.Categories.Select(x => new Category() { Id = x });
 
             Service.Update(post);
             return Ok();

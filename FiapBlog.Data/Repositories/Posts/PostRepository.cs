@@ -3,6 +3,8 @@ using FiapBlog.Data.Repositories.Base;
 using FiapBlog.Domain.Entities.Posts;
 using FiapBlog.Domain.Interfaces.Repositories.Posts;
 
+using Microsoft.EntityFrameworkCore;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,12 @@ namespace FiapBlog.Data.Repositories.Posts
     {
         public PostRepository(ApplicationDbContext context) : base(context)
         {
+        }
+
+        public override IQueryable<Post> GetAll()
+        {
+            return base.GetAll()
+                       .Include(x => x.Categories);
         }
     }
 }

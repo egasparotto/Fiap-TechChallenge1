@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FiapBlog.Data.Configuration
+namespace FiapBlog.Data.Configuration.Posts
 {
     public class PostEntityConfiguration : IEntityTypeConfiguration<Post>
     {
@@ -19,6 +19,9 @@ namespace FiapBlog.Data.Configuration
             builder.Property(x => x.Id).UseIdentityColumn();
             builder.Property(x => x.Title);
             builder.Property(x => x.Content);
+
+            builder.HasMany(x => x.Categories).WithMany().UsingEntity("POSTSCATEGORIES");
+
         }
     }
 }
