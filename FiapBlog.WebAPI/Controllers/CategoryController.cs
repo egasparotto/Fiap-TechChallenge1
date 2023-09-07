@@ -2,6 +2,7 @@
 using FiapBlog.Domain.Interfaces.Services.Categories;
 using FiapBlog.WebAPI.Model.Categories;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiapBlog.WebAPI.Controllers
@@ -29,6 +30,7 @@ namespace FiapBlog.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Insert([FromBody] InsertCategoryDTO entity)
         {
             var category = new Category()
@@ -41,6 +43,7 @@ namespace FiapBlog.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Update([FromBody] UpdateCategoryDTO entity)
         {
             var category = Service.GetById(entity.Id);
@@ -57,6 +60,7 @@ namespace FiapBlog.WebAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Delete([FromRoute] int id)
         {
             Service.Delete(id);

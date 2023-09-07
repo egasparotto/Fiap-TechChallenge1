@@ -3,6 +3,7 @@ using FiapBlog.Domain.Entities.Posts;
 using FiapBlog.Domain.Interfaces.Services.Posts;
 using FiapBlog.WebAPI.Model.Posts;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiapBlog.WebAPI.Controllers
@@ -30,6 +31,7 @@ namespace FiapBlog.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Insert([FromBody] InsertPostDTO entity)
         {
             var post = new Post()
@@ -44,6 +46,7 @@ namespace FiapBlog.WebAPI.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Update([FromBody] UpdatePostDTO entity)
         {
             var post = Service.GetById(entity.Id);
@@ -63,6 +66,7 @@ namespace FiapBlog.WebAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
+        [Authorize(Roles = "Administrator")]
         public virtual IActionResult Delete([FromRoute] int id)
         {
             Service.Delete(id);

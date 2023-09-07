@@ -11,5 +11,6 @@ namespace FiapBlog.Domain.Interfaces.Services.Users
 {
     public interface IUserService : IBaseService<User>
     {
+        public User GetByUsername(string username);
     }
 }

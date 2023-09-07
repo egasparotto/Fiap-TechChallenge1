@@ -1,7 +1,7 @@
 ﻿using FiapBlog.Domain.Entities.Base;
 using FiapBlog.Domain.Enums.Users;
 using FiapBlog.Domain.Interfaces.Entities.Base;
-
+using FiapBlog.Domain.Utils.Cryptography;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +17,10 @@ namespace FiapBlog.Domain.Entities.Users
         public string Username { get; set; }
         public string Password { get; set; }
         public UserType Type { get; set; }
+
+        public bool ValidatePassword(string password)
+        {
+            return PasswordCryptography.Validate(password, Password);
+        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using FiapBlog.Domain.Entities.Users;
 using FiapBlog.Domain.Interfaces.Services.Users;
-using FiapBlog.Domain.Services.Cryptography;
+using FiapBlog.Domain.Utils.Cryptography;
 using FiapBlog.WebAPI.Model.Users;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiapBlog.WebAPI.Controllers
@@ -10,6 +11,7 @@ namespace FiapBlog.WebAPI.Controllers
 
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "Administrator")]
     public class UserController : BaseController<User, IUserService>
     {
         public UserController(IUserService service) : base(service)

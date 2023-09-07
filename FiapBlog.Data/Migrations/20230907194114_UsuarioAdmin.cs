@@ -1,5 +1,4 @@
-﻿using FiapBlog.Domain.Services.Cryptography;
-
+﻿using FiapBlog.Domain.Utils.Cryptography;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -22,7 +21,7 @@ namespace FiapBlog.Data.Migrations
                 },
                 new object[]
                 {
-                    "Administrador",
+                    "Administrator",
                     "Admin",
                     PasswordCryptography.Encrypt("Admin"),
                     1

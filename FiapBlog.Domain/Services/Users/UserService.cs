@@ -10,5 +10,10 @@ namespace FiapBlog.Domain.Services.Users
         public UserService(IUserRepository repository) : base(repository)
         {
         }
+
+        public User GetByUsername(string username)
+        {
+            return Repository.Get(x => x.Username.Equals(username, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 }

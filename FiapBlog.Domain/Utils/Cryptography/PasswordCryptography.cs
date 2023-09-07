@@ -1,12 +1,12 @@
 ﻿using System.Security.Cryptography;
 
-namespace FiapBlog.Domain.Services.Cryptography
+namespace FiapBlog.Domain.Utils.Cryptography
 {
     public class PasswordCryptography
     {
         public static string Encrypt(string text)
         {
-            if(text == null)
+            if (text == null)
             {
                 return null;
             }
@@ -21,7 +21,7 @@ namespace FiapBlog.Domain.Services.Cryptography
             return Convert.ToBase64String(hashBytes);
         }
 
-        public static bool Decrypt(string text, string hash)
+        public static bool Validate(string text, string hash)
         {
             try
             {
