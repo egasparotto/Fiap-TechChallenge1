@@ -56,6 +56,31 @@ namespace FiapBlog.Data.Migrations
                     b.ToTable("POSTS", (string)null);
                 });
 
+            modelBuilder.Entity("FiapBlog.Domain.Entities.Users.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("USERS", (string)null);
+                });
+
             modelBuilder.Entity("POSTSCATEGORIES", b =>
                 {
                     b.Property<int>("CategoriesId")
