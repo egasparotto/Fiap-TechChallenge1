@@ -17,21 +17,41 @@ namespace FiapBlog.WebAPI.Controllers
         public UserController(IUserService service) : base(service)
         {
         }
-
+        /// <summary>
+        /// Obtém todos os usuários cadastrados
+        /// </summary>
+        /// <response code="200">Lista com todos os usuários</response>
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<User>), 200)]
         public virtual IActionResult GetAll()
         {
             return Ok(Service.GetAll());
         }
 
+        /// <summary>
+        /// Obter os usuários por id
+        /// </summary>
+        /// <param name="id">Id do usuário</param>
+        /// <response code="200">Usuário consultado</response>
+        /// <response code="404">Usuário não encontrado</response>
         [HttpGet]
         [Route("{id:int}")]
+        [ProducesResponseType(typeof(User), 200)]
+        [ProducesResponseType(typeof(void), 404)]
         public virtual IActionResult GetById([FromRoute] int id)
         {
             return Ok(Service.GetById(id));
         }
 
+        /// <summary>
+        /// Insere um novo usuário
+        /// </summary>
+        /// <param name="entity">DTO para criação do usuário</param>
+        /// <response code="201">Usuário criado com sucesso</response>
+        /// <response code="401">Usuário sem permissão</response>
         [HttpPost]
+        [ProducesResponseType(typeof(User), 201)]
+        [ProducesResponseType(typeof(void), 401)]
         public virtual IActionResult Insert([FromBody] InsertUserDTO entity)
         {
             var user = new User()
@@ -43,10 +63,20 @@ namespace FiapBlog.WebAPI.Controllers
             };
 
             Service.Insert(user);
-            return Ok();
+            return Created(new Uri($"{Request.Path}/{user.Id}", UriKind.Relative), user);
         }
 
+        /// <summary>
+        /// Altera um usuário existente
+        /// </summary>
+        /// <param name="entity">DTO para alteração do usuário</param>
+        /// <response code="200">Usuário editado com sucesso</response>
+        /// <response code="401">Usuário sem permissão</response>
+        /// <response code="404">Usuário não encontrado</response>
         [HttpPut]
+        [ProducesResponseType(typeof(User), 200)]
+        [ProducesResponseType(typeof(void), 404)]
+        [ProducesResponseType(typeof(void), 401)]
         public virtual IActionResult Update([FromBody] UpdateUserDTO entity)
         {
             var user = Service.GetById(entity.Id);
@@ -62,11 +92,19 @@ namespace FiapBlog.WebAPI.Controllers
             user.Type = entity.Type;
 
             Service.Update(user);
-            return Ok();
+            return Ok(user);
         }
 
+        /// <summary>
+        /// Exclui um usuário
+        /// </summary>
+        /// <param name="id">Id do usuário</param>
+        /// <response code="200">Usuário excluido com sucesso</response>
+        /// <response code="401">Usuário sem permissão</response>
         [HttpDelete]
         [Route("{id:int}")]
+        [ProducesResponseType(typeof(void), 200)]
+        [ProducesResponseType(typeof(void), 401)]
         public virtual IActionResult Delete([FromRoute] int id)
         {
             Service.Delete(id);

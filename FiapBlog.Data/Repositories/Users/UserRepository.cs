@@ -5,12 +5,6 @@ using FiapBlog.Domain.Interfaces.Repositories.Users;
 
 using Microsoft.Extensions.Logging;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace FiapBlog.Data.Repositories.Users
 {
     public class UserRepository : BaseRepository<User>, IUserRepository

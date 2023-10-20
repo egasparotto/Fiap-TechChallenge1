@@ -2,14 +2,7 @@
 using FiapBlog.Domain.Entities.Base;
 using FiapBlog.Domain.Interfaces.Repositories.Base;
 
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FiapBlog.Data.Repositories.Base
 {

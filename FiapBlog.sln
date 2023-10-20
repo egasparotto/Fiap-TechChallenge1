@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapBlog.WebAPI", "FiapBlog.WebAPI\FiapBlog.WebAPI.csproj", "{10DEC4E5-49C8-4054-AA1F-9533559B07F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiapBlog.WebAPI", "FiapBlog.WebAPI\FiapBlog.WebAPI.csproj", "{10DEC4E5-49C8-4054-AA1F-9533559B07F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapBlog.Domain", "FiapBlog.Domain\FiapBlog.Domain.csproj", "{B6C4199D-2DA7-4069-ABF8-4D8B63641393}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiapBlog.Domain", "FiapBlog.Domain\FiapBlog.Domain.csproj", "{B6C4199D-2DA7-4069-ABF8-4D8B63641393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiapBlog.Data", "FiapBlog.Data\FiapBlog.Data.csproj", "{6D30AA34-E610-497B-97D3-3BE0C25F5CFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiapBlog.Data", "FiapBlog.Data\FiapBlog.Data.csproj", "{6D30AA34-E610-497B-97D3-3BE0C25F5CFE}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FE6BEE81-1A05-4ECA-B456-44F4B2EB818A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{6D30AA34-E610-497B-97D3-3BE0C25F5CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D30AA34-E610-497B-97D3-3BE0C25F5CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D30AA34-E610-497B-97D3-3BE0C25F5CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6BEE81-1A05-4ECA-B456-44F4B2EB818A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6BEE81-1A05-4ECA-B456-44F4B2EB818A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6BEE81-1A05-4ECA-B456-44F4B2EB818A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6BEE81-1A05-4ECA-B456-44F4B2EB818A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,5 @@
 ﻿using FiapBlog.Domain.Entities.Base;
 using FiapBlog.Domain.Interfaces.Entities.Base;
-using FiapBlog.Domain.Interfaces.Repositories.Base;
 using FiapBlog.Domain.Interfaces.Services.Base;
 
 using Microsoft.AspNetCore.Mvc;

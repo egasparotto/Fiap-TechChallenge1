@@ -3,7 +3,6 @@ using FiapBlog.WebAPI.Configuration;
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -11,7 +10,6 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers().AddJsonOptions(x =>
@@ -47,6 +45,12 @@ builder.Services.AddSwaggerGen(c =>
             Array.Empty<string>()
         }
     });
+
+    var xmlFilename = $"FiapBlog.WebAPI.xml";
+    var xmlFilenameDomain = $"FiapBlog.Domain.xml";
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilenameDomain));
+
 });
 
 builder.Services.AddRepositories();
@@ -55,7 +59,7 @@ var configuration = builder.Configuration;
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(configuration["ConnectionStrings:ConnectionString"], x => x.MigrationsAssembly("FiapBlog.Data"));
+    options.UseSqlServer(Environment.GetEnvironmentVariable("ConnectionString"), x => x.MigrationsAssembly("FiapBlog.Data"));
 });
 
 var key = Encoding.ASCII.GetBytes(configuration["JwtSecret"]);
@@ -84,12 +88,8 @@ using var scope = app.Services.CreateScope();
 var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 context.Database.Migrate();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

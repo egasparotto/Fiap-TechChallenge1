@@ -1,4 +1,5 @@
 ﻿using FiapBlog.Domain.Utils.Cryptography;
+
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -11,7 +12,7 @@ namespace FiapBlog.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData("USERS", 
+            migrationBuilder.InsertData("USERS",
                 new string[]
                 {
                     "Name",

@@ -1,17 +1,9 @@
 ﻿using FiapBlog.Domain.Entities.Categories;
 using FiapBlog.Domain.Entities.Posts;
-using FiapBlog.Domain.Interfaces.Repositories.Categories;
 using FiapBlog.Domain.Interfaces.Repositories.Posts;
-using FiapBlog.Domain.Interfaces.Services.Base;
 using FiapBlog.Domain.Interfaces.Services.Categories;
 using FiapBlog.Domain.Interfaces.Services.Posts;
 using FiapBlog.Domain.Services.Base;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FiapBlog.Domain.Services.Posts
 {
@@ -27,9 +19,9 @@ namespace FiapBlog.Domain.Services.Posts
         {
             var categories = new List<Category>();
 
-            foreach(var category in entity.Categories)
+            foreach (var category in entity.Categories)
             {
-                categories.Add(CategoryService.GetById(category.Id));  
+                categories.Add(CategoryService.GetById(category.Id));
             }
             entity.Categories = categories;
 

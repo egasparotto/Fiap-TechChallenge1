@@ -1,5 +1,4 @@
 ﻿using FiapBlog.Domain.Entities.Base;
-using FiapBlog.Domain.Interfaces.Entities.Base;
 
 namespace FiapBlog.Domain.Interfaces.Repositories.Base
 {
