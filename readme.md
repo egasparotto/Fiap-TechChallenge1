@@ -1,7 +1,7 @@
 # FIAP BLOG
 
 Projeto criado para o Tech Challenge da fase 1 do curso de pós graduação em **Arquitetura de Sistemas .NET com Azure**.
-Turma **2023/2 GRUPO 12**
+##### Turma **2023/2 GRUPO 12**
 ## Sobre o projeto
 O projeto desenvolvido é uma WebApi em .NET 7 e com o banco de dados SQL Server 2019.
 Para a conexão entre a aplicação e o banco de dados, foi escolhido utilizar o ORM Entity Framework Core 7.0
